@@ -9,10 +9,15 @@ import * as route from "@arcgis/core/rest/route";
 import * as locator from "@arcgis/core/rest/locator";
 //import { addressToLocations, locationToAddress } from "esri/rest/locator";
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator';
+import EditorPercorso from "../Editor/Editor.vue";
 import Vuex from 'vuex'
 Vue.use(Vuex)
 
-@Component
+@Component({
+  components: {
+    EditorPercorso
+  },
+})
 export default class VisualizzionePercorso extends Vue {
   map = new Map({
     basemap: "arcgis-navigation" //Basemap layer service
@@ -40,7 +45,7 @@ export default class VisualizzionePercorso extends Vue {
       this.addGraphic("origin", event.mapPoint);
     }else if (this.view.graphics.length === 1) {
       this.addGraphic("destination", event.mapPoint);
-      this.getPercorso(this.$store.state.tipo === 'T'?[0,0,1]:[255,255,1] )
+      this.getPercorso(this.$store.state.tipo === 'T'?"#336462":"black" )
     } else {
       this.view.graphics.removeAll();
       this.addGraphic("origin",event.mapPoint);
@@ -51,7 +56,7 @@ export default class VisualizzionePercorso extends Vue {
   add (type:string,Point:any){
     this.addGraphic(type,Point)
     if(this.view.graphics.length > 1){
-      this.getPercorso(this.$store.state.tipo === 'T'?[0,0,1]:[255,255,1] )
+      this.getPercorso(this.$store.state.tipo === 'T'?"#336462":"black" )
     }
   }
 
