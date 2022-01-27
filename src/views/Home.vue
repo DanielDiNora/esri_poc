@@ -1,17 +1,20 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <img alt="Vue logo" src="https://www.arpa.umbria.it/Static/img/LOGO_ARPA_UMBRIA_N.png">
+    <ricerca-percorso></ricerca-percorso>
+    <visualizzazione-percorso></visualizzazione-percorso>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
+import RicercaPercorso from '@/components/RicercaPercorso/RicercaPercorso.vue';
+import VisualizzazionePercorso from '@/components/VisualizzazionePercorso/VisualizzazionePercorso.vue';
 
 @Component({
   components: {
-    HelloWorld,
+    RicercaPercorso,
+    VisualizzazionePercorso
   },
 })
 export default class Home extends Vue {}
